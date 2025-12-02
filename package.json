@@ -1,0 +1,18 @@
+{
+  "name": "fifty-states",
+  "version": "1.0.0",
+  "source": "src/index.html",
+  "scripts": {
+    "start": "parcel"
+  },
+  "author": "Taylor Smith",
+  "license": "UNLICENSED",
+  "description": "",
+  "dependencies": {
+    "parcel": "^2.16.1",
+    "posthtml-include": "^2.0.1"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.16.1"
+  }
+}
