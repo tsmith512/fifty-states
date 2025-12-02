@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "source": "src/index.html",
   "scripts": {
-    "start": "parcel"
+    "start": "parcel",
+    "build": "parcel build"
   },
   "author": "Taylor Smith",
   "license": "UNLICENSED",
