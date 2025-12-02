@@ -15,7 +15,7 @@ interface State {
   for (let i = 0; i < states.length; i++) {
     const state = states[i];
     counter.textContent = `${i + 1}`;
-    document.querySelector(`#map path[id*="${state.abbr}"]`)?.classList.add('visited');
+    document.querySelectorAll(`#map path[id*="${state.abbr}"]`).forEach(el => el.classList.add('visited'));
     await new Promise(resolve => setTimeout(resolve, 125));
   }
 })();
