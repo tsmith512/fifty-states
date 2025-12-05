@@ -1,7 +1,10 @@
 @use 'reset' as *;
 
+$font-sentinel: "Sentinel SSm A", "Sentinel SSm B", Georgia, 'Times New Roman', Times, serif;
+$font-depot: "Numbers Depot A", "Numbers Depot B", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 body {
-  background: #4690c2; // linear-gradient(136deg,rgba(15, 106, 70, 1) 0%, rgba(14, 75, 76, 1) 100%);
+  background: #003044; // linear-gradient(136deg,rgba(15, 106, 70, 1) 0%, rgba(14, 75, 76, 1) 100%);
   font-family: "Inkwell Sans A", "Inkwell Sans B", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -13,11 +16,13 @@ body {
   text-align: center;
   line-height: 1;
   font-size: 3rem;
-  text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+  color: #ccdae0;
+  text-shadow: -2px 2px 0 #002433;
 
   #count {
     font-size: 8rem;
     display: block;
+    font-family: $font-depot;
   }
 }
 
@@ -35,11 +40,13 @@ body {
   }
 
   path {
-    transition: 0.2s opacity ease, 0.2s fill ease;
+    transition: 0.3s opacity ease, 0.3s fill ease;
   }
 
-  #Highlights path {
-    opacity: 0;
+  #Highlights {
+    path, polygon {
+      opacity: 0;
+    }
   }
 
   #Highlights .visited {
