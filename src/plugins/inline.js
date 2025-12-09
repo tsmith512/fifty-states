@@ -10,7 +10,7 @@ module.exports = new Transformer({
   async transform({ asset, logger }) {
     const code = await asset.getCode();
     const transformedCode = code.replace(/<include src="(.+?)"\/?>/g, (_, match) => {
-      logger.log({message: `Reading ${match} for replacement`});
+      logger.log({message: `Loading ${match} for replacement`});
       return fs.readFileSync(path.join(__dirname, "..", match), "utf-8").toString();
     });
     asset.setCode(transformedCode);
