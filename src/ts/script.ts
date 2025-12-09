@@ -17,6 +17,7 @@ interface State {
     console.log(state.abbr);
     counter.textContent = `${i + 1}`;
     document.querySelectorAll(`#map [id*="${state.abbr}"]`).forEach(el => el.classList.add('visited'));
+    document.getElementById('progress')?.style.setProperty('--progress', (i / 50) * 100);
     await new Promise(resolve => setTimeout(resolve, 125));
   }
 })();

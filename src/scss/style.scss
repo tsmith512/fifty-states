@@ -8,18 +8,23 @@ body {
   font-family: "Inkwell Sans A", "Inkwell Sans B", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#text {
+@mixin vcenter {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
+}
+
+.slide {
+  @include vcenter();
   text-align: center;
   line-height: 1;
   font-size: 3rem;
   color: #ccdae0;
   text-shadow: -2px 2px 0 #002433;
 
-  #count {
+  .number {
     font-size: 8rem;
     display: block;
     font-family: $font-depot;
@@ -28,15 +33,13 @@ body {
 
 #map {
   position: absolute;
-  top: 2rem;
-  bottom: 2rem;
-  left: 1rem;
-  right: 1rem;
+  inset: 0;
+  overflow: hidden;
 
   svg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    @include vcenter();
+    width: 120%;
+    height: 120%;
   }
 
   path {
@@ -51,5 +54,40 @@ body {
 
   #Highlights .visited {
     opacity: 1;
+  }
+}
+
+// Lifted and adapted from https://www.30secondsofcode.org/css/s/circular-progress-bar/
+#progress-container {
+  position: absolute;
+  top: calc(50% + 5px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#progress {
+  --progress: 0;
+  --size: 300px;
+  --half-size: calc(var(--size) / 2);
+  --stroke-width: 6px;
+  --radius: calc((var(--size) - var(--stroke-width)) / 2);
+  --circumference: calc(var(--radius) * pi * 2);
+  --dash: calc((var(--progress) * var(--circumference)) / 100);
+
+  circle {
+    cx: var(--half-size);
+    cy: var(--half-size);
+    r: var(--radius);
+    stroke-width: var(--stroke-width);
+    fill: none;
+    stroke-linecap: round;
+  }
+
+  .fg {
+    transform: rotate(-90deg);
+    transform-origin: var(--half-size) var(--half-size);
+    stroke-dasharray: var(--dash) calc(var(--circumference) - var(--dash));
+    transition: stroke-dasharray 0.1s linear 0s;
+    stroke: #ccdae0;
   }
 }

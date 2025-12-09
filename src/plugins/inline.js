@@ -9,7 +9,7 @@ const path = require("path");
 module.exports = new Transformer({
   async transform({ asset, logger }) {
     const code = await asset.getCode();
-    const transformedCode = code.replace(/<include src="(.+?)"\/?>/g, (_, match) => {
+    const transformedCode = code.replaceAll(/<include src="(.+?)"\s*?\/?>/g, (_, match) => {
       logger.log({message: `Loading ${match} for replacement`});
       return fs.readFileSync(path.join(__dirname, "..", match), "utf-8").toString();
     });
