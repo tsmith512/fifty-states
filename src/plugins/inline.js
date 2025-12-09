@@ -7,10 +7,10 @@ const path = require("path");
  * separate, but without bundling in all of PostHTML for its include plugin.
  */
 module.exports = new Transformer({
-  async transform({ asset }) {
+  async transform({ asset, logger }) {
     const code = await asset.getCode();
     const transformedCode = code.replace(/<include src="(.+?)"\/?>/g, (_, match) => {
-      console.log(`Reading ${match} for replacement`);
+      logger.log({message: `Reading ${match} for replacement`});
       return fs.readFileSync(path.join(__dirname, "..", match), "utf-8").toString();
     });
     asset.setCode(transformedCode);
