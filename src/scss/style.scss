@@ -2,6 +2,7 @@
 
 $font-sentinel: "Sentinel SSm A", "Sentinel SSm B", Georgia, 'Times New Roman', Times, serif;
 $font-depot: "Numbers Depot A", "Numbers Depot B", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+$font-ringside-wide: "Ringside Wide SSm A", "Ringside Wide SSm B", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 
 body {
   background: #003044; // linear-gradient(136deg,rgba(15, 106, 70, 1) 0%, rgba(14, 75, 76, 1) 100%);
@@ -9,28 +10,43 @@ body {
   overflow: hidden;
 }
 
-@mixin vcenter {
+@mixin vcenter($vert: 50%) {
   position: absolute;
-  top: 50%;
+  top: $vert;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
 }
 
 .slide {
-  @include vcenter();
+  @include vcenter(60%);
+
+  @media (orientation: landscape) {
+    top: 50%;
+  }
+
   text-align: center;
   line-height: 1;
-  font-size: 3rem;
+  font-size: 1.5rem;
+  @media (min-width: 400px) {
+    font-size: 2rem;
+  }
   color: #ccdae0;
   text-shadow: -2px 2px 0 #002433;
 
   .subtitle {
-    font-weight: 700;
+    font-weight: 300;
+    font-family: $font-ringside-wide;
+    text-transform: uppercase;
+    letter-spacing: 2px;
   }
 
   .number {
-    font-size: 8rem;
+    font-size: 4rem;
+    @media (min-width: 400px) {
+      font-size: 8rem;
+    }
+
     display: block;
     font-family: $font-depot;
   }
@@ -47,7 +63,11 @@ body {
     rotateX(calc(20deg * var(--mouseY)));
 
   svg {
-    @include vcenter();
+    @include vcenter(40%);
+    @media (orientation: landscape) {
+      top: 50%;
+    }
+
     width: 120%;
     height: 120%;
   }
@@ -69,13 +89,15 @@ body {
 
 // Lifted and adapted from https://www.30secondsofcode.org/css/s/circular-progress-bar/
 #progress-container {
-  position: absolute;
-  top: calc(50% + 5px);
-  left: 50%;
-  transform: translate(-50%, -50%);
+  @include vcenter(calc(50% + 5px));
 }
 
 #progress {
+  width: 300px;
+  max-width: 90%;
+  height: auto;
+  margin: 0 auto;
+
   --progress: 0;
   --size: 300px;
   --half-size: calc(var(--size) / 2);
