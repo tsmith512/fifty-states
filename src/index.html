@@ -13,14 +13,20 @@
     <include src="gfx/map.svg"/>
   </div>
 
-  <div class="slide" id="total">
-    <span class="number" id="count">0</span>
-    <span class="subtitle">States</span>
-    <div id="progress-container">
-      <include src="gfx/progress.svg"/>
+  <main>
+    <div class="slide" id="total">
+      <div id="progress-container">
+        <include src="gfx/progress.svg"/>
+      </div>
+      <span class="number" id="count">0</span>
+      <span class="subtitle">States</span>
     </div>
-  </div>
 
+    <div class="slide" id="top5">
+      <span class="subtitle">Top 5</span>
+      <ol id="states-list"></ol>
+    </div>
+  </main>
   <script src="ts/script.ts"></script>
 </body>
 </html>
