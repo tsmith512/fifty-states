@@ -5,7 +5,8 @@ $font-depot: "Numbers Depot A", "Numbers Depot B", 'Segoe UI', Tahoma, Geneva, V
 
 body {
   background: #003044; // linear-gradient(136deg,rgba(15, 106, 70, 1) 0%, rgba(14, 75, 76, 1) 100%);
-  font-family: "Inkwell Sans A", "Inkwell Sans B", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: $font-sentinel;
+  overflow: hidden;
 }
 
 @mixin vcenter {
@@ -24,6 +25,10 @@ body {
   color: #ccdae0;
   text-shadow: -2px 2px 0 #002433;
 
+  .subtitle {
+    font-weight: 700;
+  }
+
   .number {
     font-size: 8rem;
     display: block;
@@ -35,6 +40,11 @@ body {
   position: absolute;
   inset: 0;
   overflow: hidden;
+
+  perspective: 2000px;
+  transform:
+    rotateY(calc(20deg * var(--mouseX)))
+    rotateX(calc(20deg * var(--mouseY)));
 
   svg {
     @include vcenter();

@@ -21,3 +21,8 @@ interface State {
     await new Promise(resolve => setTimeout(resolve, 125));
   }
 })();
+
+document.addEventListener('mousemove', (event) => {
+  document.getElementById('map')?.style.setProperty('--mouseX', `${(event.clientX / window.innerWidth) - 0.5}`);
+  document.getElementById('map')?.style.setProperty('--mouseY', `${(event.clientY / window.innerHeight) - 0.5}`);
+});
