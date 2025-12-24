@@ -18,6 +18,25 @@ body {
   width: 100%;
 }
 
+header {
+  position: absolute;
+  z-index: 100;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+
+  svg {
+    max-width: 4rem;
+    height: auto;
+    transition: opacity .2s ease;
+    opacity: 40%;
+
+    &:hover {
+      opacity: 90%;
+    }
+  };
+}
+
 main {
   position: absolute;
   width: 100%;
@@ -41,14 +60,12 @@ main {
   position: relative;
   flex: 0 0 100%;
   width: 100%;
+  margin-top: 4rem;
   scroll-snap-align: start;
 
   text-align: center;
   line-height: 1;
-  font-size: 1.25rem;
-  @media (orientation: portrait) {
-    margin-top: 6rem;
-  }
+  font-size: 1.125rem;
   @media (min-width: 400px) {
     font-size: 2rem;
   }
@@ -97,11 +114,7 @@ main {
     rotateX(calc(20deg * var(--mouseY)));
 
   svg {
-    @include vcenter(40%);
-    @media (orientation: landscape) {
-      top: 50%;
-    }
-
+    @include vcenter(50%);
     width: 120%;
     height: 120%;
   }
