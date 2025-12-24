@@ -15,7 +15,6 @@ interface State {
   const top5list = document.getElementById('states-list');
   for (let i = 1; i < 6; i++) { // Skip home state
     const state = states[i];
-    console.log(state)
     if (top5list) {
       const stateLi = document.createElement('li');
       stateLi.textContent = state.state;
@@ -41,7 +40,33 @@ interface State {
   }
 })();
 
-document.addEventListener('mousemove', (event) => {
-  document.getElementById('map')?.style.setProperty('--mouseX', `${(event.clientX / window.innerWidth) - 0.5}`);
-  document.getElementById('map')?.style.setProperty('--mouseY', `${(event.clientY / window.innerHeight) - 0.5}`);
+document.addEventListener('DOMContentLoaded', async () => {
+  const mapEl = document.getElementById('map');
+  const mainEl = document.querySelector('main');
+  const scrollDotEl = document.getElementById('scrolldot');
+
+  if (mapEl) {
+    document.addEventListener('mousemove', (event) => {
+      mapEl.style.setProperty('--mouseX', `${(event.clientX / window.innerWidth) - 0.5}`);
+      mapEl.style.setProperty('--mouseY', `${(event.clientY / window.innerHeight) - 0.5}`);
+    });
+  }
+
+  if (mainEl) {
+    window.focus();
+    document.addEventListener('keyup', (event) => {
+      if (event.key == 'ArrowLeft') {
+        mainEl.scrollLeft = 0;
+        event.preventDefault();
+      } else if (event.key == 'ArrowRight') {
+        mainEl.scrollLeft = window.innerWidth;
+        event.preventDefault();
+      }
+    });
+
+    mainEl.addEventListener('scroll', (event) => {
+      const scroll = (mainEl.scrollLeft / window.innerWidth);
+      scrollDotEl?.style.setProperty('left', `${2 * scroll}rem`);
+    });
+  }
 });
