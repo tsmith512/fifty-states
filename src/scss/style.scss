@@ -29,10 +29,10 @@ header {
     max-width: 4rem;
     height: auto;
     transition: opacity .2s ease;
-    opacity: 40%;
+    opacity: 55%;
 
     &:hover {
-      opacity: 90%;
+      opacity: 100%;
     }
   };
 }
@@ -69,7 +69,7 @@ main {
   @media (min-width: 400px) {
     font-size: 2rem;
   }
-  color: #ccdae0;
+  color: #ffffff;
   text-shadow: -2px 2px 0 #002433;
 
   .subtitle {
