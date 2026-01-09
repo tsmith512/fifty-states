@@ -1,4 +1,5 @@
 @use 'reset' as *;
+@use "sass:color";
 
 $font-sentinel: "Sentinel SSm A", "Sentinel SSm B", Georgia, 'Times New Roman', Times, serif;
 $font-depot: "Numbers Depot A", "Numbers Depot B", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -101,6 +102,10 @@ main {
     display: block;
     font-family: $font-depot;
   }
+
+  .tiny {
+    font-size: 0.75rem;
+  }
 }
 
 #map {
@@ -124,14 +129,20 @@ main {
   }
 
   #Highlights {
-    path, polygon {
+    path {
       opacity: 0;
+    }
+
+    .top5 {
+      // Comes from Illustrator swatch .st0 in the SVG
+      fill: color.adjust(#005f87, $hue: -8deg, $lightness: 3%, $saturation: -3%);
+    }
+
+    .visited {
+      opacity: 1;
     }
   }
 
-  #Highlights .visited {
-    opacity: 1;
-  }
 }
 
 // Lifted and adapted from https://www.30secondsofcode.org/css/s/circular-progress-bar/

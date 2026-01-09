@@ -13,7 +13,7 @@ interface State {
   // quickly mark top 5 states
   states.sort((a, b) => b.points - a.points);
   const top5list = document.getElementById('states-list');
-  for (let i = 1; i < 6; i++) { // Skip home state
+  for (let i = 2; i < 7; i++) { // Skip home state
     const state = states[i];
     if (top5list) {
       const stateLi = document.createElement('li');
