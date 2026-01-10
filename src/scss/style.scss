@@ -94,7 +94,7 @@ main {
   }
 
   .number {
-    font-size: 4rem;
+    font-size: 5rem;
     @media (min-width: 400px) {
       font-size: 8rem;
     }
@@ -152,14 +152,14 @@ main {
 
 #progress {
   width: 300px;
-  max-width: 90%;
+  max-width: 70%;
   height: auto;
   margin: 0 auto;
 
   --progress: 0;
   --size: 300px;
   --half-size: calc(var(--size) / 2);
-  --stroke-width: 6px;
+  --stroke-width: 8px;
   --radius: calc((var(--size) - var(--stroke-width)) / 2);
   --circumference: calc(var(--radius) * pi * 2);
   --dash: calc((var(--progress) * var(--circumference)) / 100);
